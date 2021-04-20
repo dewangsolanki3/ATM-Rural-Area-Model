@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styling.css">
+  <link rel="stylesheet" type="text/css" href="css/clock.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/updateBalance.js"></script>
+
+</head>
+
+<style>
+
+    
+.PINtext {
+	font-size:40px;
+	width: 300px;
+	text-align: center;
+}
+.calcBtn {
+	font-size: 30px;
+	width: 100px;
+    height: 100px;
+    margin: 10px;
+    color: white;
+
+}
+</style>
+
+<body>
+
+    <div class="containers" style="position:absolute; top:120px; left: 2100px;">
+  
+        <div id="clock">
+          
+          <div id="h"></div>
+          <div class="span"> : </div>
+          <div id="m"></div>
+          <div class="span"> : </div>
+          <div id="s"></div>
+        
+        </div>
+        
+        <div id="date">
+          <div id="day"></div>
+          <div id="month"></div>
+          <div id="year"></div>
+        </div>
+          
+    </div>
+
+
+<div class="container" style="position:absolute; left: 500px; top: 120px;">
+
+<img src="images/logo.png" style="position:absolute; top:-80px; left: -480px; background: white; padding: 10px 5px;">  
+
+
+<div class="row">
+    <h2 style="text-align: center; font-size: 50px" >Please enter your PIN <br/> <br/> पिन एन्तर करा </h2>
+</div>
+
+<br/>
+<br/>
+
+
+<p align="center"><input style="color:black" id="tbInput" class="PINtext" type="password" placeholder="Enter PIN" maxlength="4"/></p>
+
+<div id="VirtualKey" align="center">
+    <input class="calcBtn btn-primary" id="btn1" type="button" onclick="input(this);" value="1" />
+    <input class="calcBtn btn-primary" id="btn2" type="button" onclick="input(this);" value="2" />
+    <input class="calcBtn btn-primary" id="btn3" type="button" onclick="input(this);" 
+    value="3"/>
+    <br />
+    <input class="calcBtn btn-primary" id="btn4" type="button" onclick="input(this);" 
+    value="4"/>
+    <input class="calcBtn btn-primary" id="btn5" type="button" onclick="input(this);" 
+    value="5"/>
+    <input class="calcBtn btn-primary" id="btn6" type="button" onclick="input(this);" 
+    value="6"/>
+    <br />
+    <input class="calcBtn btn-primary" id="btn7" type="button" onclick="input(this);" 
+    value="7"/>
+    <input class="calcBtn btn-primary" id="btn8" type="button" onclick="input(this);" 
+    value="8"/>
+    <input class="calcBtn btn-primary" id="btn9" type="button" onclick="input(this);" 
+    value="9"/>
+    <br />
+    <input class="calcBtn btn-primary" id="btnEnt" type="button" onclick="ent()" style="color:rgb(47, 255, 47)" 
+    value="Enter"/>
+    <input class="calcBtn btn-primary" id="btn0" type="button" onclick="input(this)" 
+    value="0"/>
+    <input class="calcBtn btn-primary" id="btnDel" type="button" style="color:red" value="Delete" onclick="del();" />
+</div>
+
+<span id="PIN"></span>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"><a href="index.html" style="" class="btn btn-danger btn-lg returnCardButton">Return Card</a></div>
+    </div>
+
+
+
+<script>
+
+function input(e) {
+    var tbInput = document.getElementById("tbInput");
+    if (tbInput.value.length<4){
+    tbInput.value=tbInput.value + e.value;
+	}
+}
+
+function del() {
+	var tbInput = document.getElementById("tbInput");
+	tbInput.value = tbInput.value.substr(0, tbInput.value.length-1);
+}
+var count=1;
+function ent() {
+	var PIN="4444";
+  	var str1=document.getElementById("tbInput").value;
+  	if (str1==PIN)
+  	{
+  		window.location="acct.html?account=SAV";     // home.html
+ 	}
+ 	else{
+ 		if (count<5){
+ 		alert("Incorrect PIN.  You have "+(5-count)+" attempts left");
+ 		document.getElementById("tbInput").value ="";
+ 		count++;
+ 		}
+ 		else{
+ 				alert("Incorrect PIN limit reached.\nYour card has been frozen for 24 hours.\n Please contact your bank via online or telephone.");
+ 				window.location="index.html";
+ 		}
+ 	}
+}
+</script>
+
+<script src="./js/clock.js"></script>
+
+<audio id="audio" src="./audios/password.mp3"></audio>
+
+
+<script>
+
+window.onload = function(){
+    document.getElementById("audio").play()
+}
+
+  </script>
+
+
+</div>
+</body>
+</html>

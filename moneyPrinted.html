@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styling.css">
+  <link rel="stylesheet" type="text/css" href="css/clock.css">
+
+</head>
+
+<style>
+
+img {
+  position: relative;
+  /* top: 80%; */
+  left: 40%;
+  height: 400px;
+  width: 400px;
+}
+.center{
+    text-align:center;
+}
+.center div {
+    display:inline-block;
+    margin-left:50px;
+    margin-right:50px;
+    margin-top:105px;
+}
+</style>
+
+
+<body>
+
+<img src="images/logo.png" style="position:absolute; top:50px; left: 30px; background: white; padding: 10px 5px; height: 150px; width: 250px;">  
+
+
+<div class="containers" style="position:absolute; top:120px; left: 2100px;">
+  
+  <div id="clock">
+    
+    <div id="h"></div>
+    <div class="span"> : </div>
+    <div id="m"></div>
+    <div class="span"> : </div>
+    <div id="s"></div>
+  
+  </div>
+  
+  <div id="date">
+    <div id="day"></div>
+    <div id="month"></div>
+    <div id="year"></div>
+  </div>
+    
+</div>
+
+
+  <h2 align="center" style=" text-align: center; font-size:45px; font-weight: 900; color: white;"> <br/><br/> Money has been printed, Thank you for using Saral Bank.<br/> <br/> पैसे मछिन से निकाल ले, सरल बैन्क का इस्तेमाल कर्नए के लिये धन्यवाद |</h2>
+
+  <div class="row">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <img src="images/money.png">
+  </div>
+
+  <div class="center">
+      <div><a href="home.html" style="" class="btn btn-primary btn-lg">Home</a></div>
+      <div><a href="selectAcct.html" style="" class="btn btn-primary btn-lg">Perform Another Transaction</a></div>
+      <div><a href="index.html" style="" class="btn btn-danger btn-lg">Return Card</a></div>
+  </div>
+
+
+<script src="./js/clock.js"></script>
+
+
+
+  
+<audio id="audio1" src="./audios/thankYou.mp3"></audio>
+<audio id="audio2" src="./audios/beep.m4a"></audio>
+
+
+<script>
+
+window.onload = function(){
+    document.getElementById("audio1").play()
+    document.getElementById("audio2").play()
+
+}
+
+  </script>
+
+</body>
+</html>

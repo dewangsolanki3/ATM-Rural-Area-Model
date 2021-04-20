@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styling.css">
+  <link rel="stylesheet" type="text/css" href="css/clock.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/updateBalance.js"></script>
+</head>
+
+<style>
+
+.PINtext {
+	font-size:40px;
+	width: 500px;
+	text-align: center;
+}
+.calcBtn {
+	font-size: 30px;
+	width: 100px;
+  height: 100px;
+  margin: 10px;
+  background-color: burlywood;
+}
+
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+.cardAnimation {
+	animation: zoominoutsinglefeatured 3s forwards ;
+  animation-iteration-count: infinite;
+}
+
+</style>
+
+<body>
+
+<img src="images/logo.png" style="position:absolute; top:60px; left: 20px; background: white; padding: 10px 5px;">  
+
+<h1 align="center"><font size="7"><big><big style="font-weight: 900;"> <br/>Welcome to SARAL BANK</big></big></font></h1>
+<h3 align="center">Sector 8, Plot 1, Ghansoli Gaon, Navi Mumbai, Maharashtra 400701</h3>
+
+ <br/>
+<marquee scrollamount="15" style="font-size: 25px; background-color: rgb(255, 255, 138); color: black; letter-spacing: 3px; font-weight: 900;" width="100%" direction="left" height="45px">
+  अब्ब किसान कार्ड प्राप्त करे अप्ने पास के सरल बान्क से | २ अपृल से कर्ड उप्लब्थ | अधिक जान्कारी के लिये काल करे - ०२२ २५० २५० | 
+</marquee>
+
+<div style="position:absolute; top:60px; right: 30px;">
+  
+  <div id="clock">
+    
+    <div id="h"></div>
+    <div class="span"> : </div>
+    <div id="m"></div>
+    <div class="span"> : </div>
+    <div id="s"></div>
+  
+  </div>
+  
+  <div id="date">
+    <div id="day"></div>
+    <div id="month"></div>
+    <div id="year"></div>
+    <!-- <div class="span"> : </div> -->
+    <!-- <div id="dayname"></div> -->
+  </div>
+    
+  </div>
+
+
+
+
+
+
+<div class="row">
+<br/>
+<br/>
+<br/>
+<br/>
+
+	<h2 style="text-align: center"><font size="6">Insert Card</font></h2>
+</div>
+
+<!-- <p align="center"> *** The Account Number is 1234567887654321 *** </p> -->
+<!-- 
+<p align="center"><input style="color:black" id="tbInput" class="PINtext" type="password" placeholder="Enter Number" maxlength="16" readonly/></p>
+
+<div id="VirtualKey" align="center">
+    <input class="calcBtn" id="btn1" type="button" onclick="input(this);" value="1" />
+    <input class="calcBtn" id="btn2" type="button" onclick="input(this);" value="2" />
+    <input class="calcBtn" id="btn3" type="button" onclick="input(this);" value="3"/>
+    <br />
+    <input class="calcBtn" id="btn4" type="button" onclick="input(this);" value="4"/>
+    <input class="calcBtn" id="btn5" type="button" onclick="input(this);" value="5"/>
+    <input class="calcBtn" id="btn6" type="button" onclick="input(this);" value="6"/>
+    <br />
+    <input class="calcBtn" id="btn7" type="button" onclick="input(this);" value="7"/>
+    <input class="calcBtn" id="btn8" type="button" onclick="input(this);" value="8"/>
+    <input class="calcBtn" id="btn9" type="button" onclick="input(this);" value="9"/>
+    <br />
+    <input class="calcBtn" id="btnEnt" type="button" onclick="ent()" style="color:green" value="Enter"/>
+    <input class="calcBtn" id="btn0" type="button" onclick="input(this)" value="0"/>
+    <input class="calcBtn" id="btnDel" type="button" style="color:red" value="Delete" onclick="del();" />
+</div> -->
+
+<h2 align="center"><font size="6">कार्ड इन्सर्ट करे</font></h2>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<p align="center"><input type="image" class="cardAnimation" src="images/insert_card.png" name="insertCard"  id="insertCard" onclick="insertCard()"></p>
+
+
+<img style="position: absolute; left: 1%; bottom: 30px; width: 28%;" src="./images/dp2.jpg">
+<img style="position: absolute; right: 1%; bottom: 30px; width: 28%;" src="./images/dp3.jpg">
+<!-- <img style="position: relative; left: 55%; bottom: 0; width: 25%;" src="./images/dp3.webp"> -->
+
+
+<script>
+  var users = {
+    'accountNumber': 123456,
+    'accountPin': 6969,
+    'chequingBalance': 2000,
+    'savingsBalance': 5000,
+    'chequingTransactions': [[Date(),0,0,2000]],
+    'savingsTransactions': [[Date(),0,0,5000]]
+  };
+  console.log(users)
+  updateSessionStorage(users);
+
+function insertCard(){
+  window.location="PINInput.html"
+}
+
+function input(e) {
+    var tbInput = document.getElementById("tbInput");
+    if (tbInput.value.length < 16) {
+    tbInput.value=tbInput.value + e.value;
+	}
+}
+
+function del() {
+	var tbInput = document.getElementById("tbInput");
+	tbInput.value = tbInput.value.substr(0, tbInput.value.length-1);
+}
+
+function ent() {
+	var PIN="123456";
+	var str1=document.getElementById("tbInput").value;
+	if (str1==PIN) {
+		window.location="PINInput.html";
+ 	} else {
+ 		alert("That account number does not exist!");
+ 		document.getElementById("tbInput").value ="";
+ 	}
+}
+
+</script>
+<script src="./js/clock.js"></script>
+
+</body>
+</html>
